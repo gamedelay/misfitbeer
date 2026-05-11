@@ -292,9 +292,92 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#2b579a;overflow:hid
   .m-menu-sep{border:none;border-top:1px solid #808080;border-bottom:1px solid #fff;margin:2px 4px;}
 }
 
+/* AGE GATE */
+#age-gate{
+  display:none;
+  position:fixed;top:0;left:0;width:100vw;height:100vh;
+  background:rgba(0,0,0,0.75);
+  z-index:999999;
+  align-items:center;
+  justify-content:center;
+  font-family:Arial,sans-serif;
+}
+#age-gate.show{display:flex;}
+#age-dialog{
+  background:#c0c0c0;
+  border:2px solid;border-color:#fff #808080 #808080 #fff;
+  box-shadow:4px 4px 0 #000;
+  width:340px;
+  max-width:90vw;
+}
+#age-dialog-title{
+  background:linear-gradient(90deg,#000080,#1084d0);
+  color:#fff;font-size:12px;font-weight:bold;
+  padding:3px 8px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+#age-dialog-body{padding:18px 16px 14px;}
+#age-dialog-icon{font-size:32px;text-align:center;margin-bottom:10px;}
+#age-dialog-msg{
+  font-size:12px;color:#000;line-height:1.6;
+  margin-bottom:14px;text-align:center;
+}
+#age-dialog-msg strong{display:block;font-size:14px;margin-bottom:6px;}
+.age-btn{
+  background:#c0c0c0;
+  border:2px solid;border-color:#fff #808080 #808080 #fff;
+  padding:5px 20px;font-size:12px;
+  cursor:pointer;font-family:Arial,sans-serif;color:#000;
+  min-width:100px;
+}
+.age-btn:active{border-color:#808080 #fff #fff #808080;transform:translate(1px,1px);}
+#age-btn-yes{margin-right:8px;}
+#age-sbar{
+  background:#c0c0c0;border-top:1px solid #808080;
+  padding:2px 6px;font-size:10px;color:#000;
+}
+/* Shake animation for underage click */
+@keyframes age-shake{
+  0%,100%{transform:translateX(0);}
+  20%{transform:translateX(-8px);}
+  40%{transform:translateX(8px);}
+  60%{transform:translateX(-6px);}
+  80%{transform:translateX(6px);}
+}
+#age-dialog.shake{animation:age-shake 0.4s ease;}
 </style>
 </head>
 <body>
+
+<!-- AGE GATE -->
+<div id="age-gate">
+  <div id="age-dialog">
+    <div id="age-dialog-title">
+      <span>🍺 Age Verification Required</span>
+      <div style="display:flex;gap:2px;">
+        <div style="background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;width:16px;height:14px;font-size:9px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:bold;">_</div>
+        <div style="background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;width:16px;height:14px;font-size:9px;display:flex;align-items:center;justify-content:center;color:#000;font-weight:bold;">✕</div>
+      </div>
+    </div>
+    <div id="age-dialog-body">
+      <div id="age-dialog-icon">🍺</div>
+      <div id="age-dialog-msg">
+        <strong>Welcome to Misfit Brewing Co.</strong>
+        This site contains alcohol-related content.<br>
+        You must be of legal drinking age<br>
+        to enter this site.
+      </div>
+      <div id="age-error" style="display:none;color:#cc0000;font-size:11px;text-align:center;margin-bottom:10px;">
+        Sorry, you must be of legal drinking age to enter.
+      </div>
+      <div style="display:flex;justify-content:center;align-items:center;">
+        <button class="age-btn" id="age-btn-yes" onclick="ageYes()">Yes, I'm of age</button>
+        <button class="age-btn" id="age-btn-no" onclick="ageNo()">No, I'm not</button>
+      </div>
+    </div>
+    <div id="age-sbar">Please confirm your age to continue.</div>
+  </div>
+</div>
 <div id="desktop">
 
 <!-- ICONS — left side -->
@@ -889,7 +972,7 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#2b579a;overflow:hid
   <canvas id="ss-canvas"></canvas>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
 var WINS=['home','cv','misfit','bundi','contact','mines','folder'];
 var zTop=20,state={};
@@ -1346,7 +1429,33 @@ setTimeout(function(){
   focusWin('home');
   updateClippy();
 },80);
+/* AGE GATE — init */
+(function(){
+  if(!sessionStorage.getItem('ageVerified')){
+    document.getElementById('age-gate').classList.add('show');
+  }
 })();
+
+})();
+</script>
+
+<script>
+/* AGE GATE — button handlers (must be global) */
+function ageYes(){
+  sessionStorage.setItem('ageVerified','1');
+  document.getElementById('age-gate').classList.remove('show');
+}
+function ageNo(){
+  var dialog=document.getElementById('age-dialog');
+  var err=document.getElementById('age-error');
+  var sbar=document.getElementById('age-sbar');
+  err.style.display='block';
+  sbar.textContent='Access denied. You must be of legal drinking age.';
+  dialog.classList.remove('shake');
+  void dialog.offsetWidth;
+  dialog.classList.add('shake');
+  setTimeout(function(){ window.location.href='https://www.google.com'; },1200);
+}
 </script>
 
 <!-- ══ MOBILE SITE ══ -->
@@ -1544,7 +1653,7 @@ setTimeout(function(){
      <span style="padding:2px 8px;color:#000;"><u>H</u>elp</span>
     </div>
     <div class="m-body">
-      <div style="font-size:11px;margin-bottom:10px;color:#000;">Send a message to <a href="/cdn-cgi/l/email-protection#d3bbb6aa93b1a1b6bdb7b2bdb7b6a5bcaafdb0bcbe" style="color:#000080;text-decoration:underline;"><span class="__cf_email__" data-cfemail="3f575a467f5d4d5a515b5e515b5a495046115c5052">[email&#160;protected]</span></a></div>
+      <div style="font-size:11px;margin-bottom:10px;color:#000;">Send a message to <a href="mailto:hey@brendandevoy.com">hey@brendandevoy.com</a></div>
       <label style="font-size:11px;display:block;margin-bottom:3px;">Your name:</label>
       <input class="m-input" id="m-name" type="text" placeholder="Full name">
       <label style="font-size:11px;display:block;margin-bottom:3px;">Your email:</label>
@@ -1597,7 +1706,7 @@ setTimeout(function(){
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* MOBILE LOGIC — only runs on mobile */
 (function(){
   var isMobile=window.innerWidth<=768;
