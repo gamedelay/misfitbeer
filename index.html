@@ -17,8 +17,8 @@
 <title>Misfit Brewing Co.</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Arial,sans-serif;font-size:12px;background:#2b579a;overflow:hidden;height:100vh;user-select:none;cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24"><polygon points="0,0 0,18 5,13 9,22 12,21 8,12 14,12" fill="white" stroke="black" stroke-width="1.5"/></svg>') 0 0,default;-webkit-font-smoothing: none;font-smoothing: none;}
-#desktop{width:100vw;height:calc(100vh - 30px);position:relative;background: #2b579a url('images/IMG_0018.JPG') center center/cover no-repeat;overflow:hidden;transform-origin:top left;} 
+body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hidden;height:100vh;user-select:none;cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 20 24"><polygon points="0,0 0,18 5,13 9,22 12,21 8,12 14,12" fill="white" stroke="black" stroke-width="1.5"/></svg>') 0 0,default;-webkit-font-smoothing: none;font-smoothing: none;}
+#desktop{width:100vw;height:calc(100vh - 30px);position:relative;background: #000000 url('images/IMG_0018.JPG') center center/cover no-repeat;overflow:hidden;transform-origin:top left;} 
 
 
 /* ICONS */
@@ -33,7 +33,7 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#2b579a;overflow:hid
 .win.maximised{left:0!important;top:0!important;width:100%!important;height:calc(100vh - 30px)!important;}
 
 /* TITLEBAR */
-.titlebar{background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-size:13px;font-weight:bold;padding:2px 3px 2px;display:flex;justify-content:space-between;align-items:center;cursor:move;flex-shrink:0;}
+.titlebar{background:linear-gradient(90deg,#000000,#282929);color:#fff;font-size:13px;font-weight:bold;padding:2px 3px 2px;display:flex;justify-content:space-between;align-items:center;cursor:move;flex-shrink:0;}
 .titlebar.inactive{background:linear-gradient(90deg,#707070,#a0a0a0);}
 .titlebar-btns{display:flex;gap:2px;}
 .wbtn{background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;width:16px;height:14px;font-size:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#000;font-weight:bold;flex-shrink:0;}
@@ -58,7 +58,7 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#2b579a;overflow:hid
 .profile-img{width:215px;height:215px;object-fit:cover;object-position:top center;border:2px solid;border-color:#808080 #fff #fff #808080;flex-shrink:0;display:block;}
 
 /* CV */
-.word-outer{background:#2b579a;padding:16px;}
+.word-outer{background:#000000;padding:16px;}
 .word-doc{background:#fff;padding:54px 80px;border:1px solid #666;box-shadow:3px 3px 8px rgba(0,0,0,0.5);max-width:760px;margin:0 auto;background-image:repeating-linear-gradient(0deg,transparent,transparent 27px,rgba(0,0,80,0.03) 28px);}
 .wordart{display:block;text-align:center;font-size:54px;font-weight:900;font-family:'Arial Black',Impact,sans-serif;color:#00bcd4;text-shadow:5px 5px 0 #1a237e;transform:skewX(-6deg) skewY(-1deg);margin-bottom:6px;letter-spacing:-1px;}
 .cv-subtitle{font-family:'Times New Roman',serif;font-size:11px;letter-spacing:4px;text-align:center;color:#555;margin-bottom:20px;text-transform:uppercase;}
@@ -205,7 +205,7 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#2b579a;overflow:hid
   body{overflow:auto;height:auto;cursor:default;}
   #desktop,#taskbar,#screensaver,#start-menu,#clippy-wrap{display:none!important;}
   /* Centre windows vertically and horizontally */
-  #mobile-site{display:flex;flex-direction:column;align-items:center;justify-content:center;background: #2b579a url('images/back.jpeg') center center/cover no-repeat;overflow:hidden;transform-origin:top left;filter: contrast(1.10) brightness(0.98);height:100vh;padding:30px 30px 30px 30px;}
+  #mobile-site{display:flex;flex-direction:column;align-items:center;justify-content:center;background: #000000 url('images/back.jpeg') center center/cover no-repeat;overflow:hidden;transform-origin:top left;filter: contrast(1.10) brightness(0.98);height:100vh;padding:30px 30px 30px 30px;}
   .m-win{background:#c0c0c0;border:2px solid;border-color:#fff #808080 #808080 #fff;box-shadow:2px 2px 0 #000;margin-bottom:14px;display:none;width:100%;max-width:480px;}
   .m-win.m-active{display:block;}
   /* Title bars */
