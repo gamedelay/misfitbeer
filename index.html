@@ -1223,9 +1223,9 @@ function startSS(){
     txt.hue=(txt.hue+1)%360;
     ctx.font='bold 48px Arial Black,Arial';ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.fillStyle='hsl('+txt.hue+',100%,60%)';
-    ctx.fillText('BRENDAN DEVOY',txt.x,txt.y);
+    ctx.fillText('MISFIT BREWING CO.',txt.x,txt.y);
     txt.x+=txt.dx;txt.y+=txt.dy;
-    var tw=ctx.measureText('BRENDAN DEVOY').width/2;
+    var tw=ctx.measureText('MISFIT BREWING CO.').width/2;
     if(txt.x+tw>cv.width||txt.x-tw<0){txt.dx*=-1;txt.hue=(txt.hue+60)%360;}
     if(txt.y+30>cv.height||txt.y-30<0){txt.dy*=-1;txt.hue=(txt.hue+60)%360;}
     ssRaf=requestAnimationFrame(drawSS);
