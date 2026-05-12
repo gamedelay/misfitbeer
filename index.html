@@ -377,14 +377,11 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
 <div id="desktop">
 
 <!-- ICONS — left side -->
-<div class="icon" id="ico-home" style="top:14px;left:14px;" ondblclick="openWin('home')" onclick="selIcon('home')">
-   <img src="images/home.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">Home</span>
-</div>
 <div class="icon" id="ico-misfit" style="top:104px;left:14px;" ondblclick="openWin('misfit')" onclick="selIcon('misfit')">
-  <img src="images/power.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">misfitbeer.ppt</span>
+  <img src="images/power.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">About.ppt</span>
 </div>
 <div class="icon" id="ico-bundi" style="top:194px;left:14px;" ondblclick="openWin('bundi')" onclick="selIcon('bundi')">
-  <img src="images/paint.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">bundipaints.bmp</span>
+  <img src="images/paint.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">beers.bmp</span>
 </div>
 <div class="icon" id="ico-cv" style="top:284px;left:14px;" ondblclick="openWin('cv')" onclick="selIcon('cv')">
   <img src="images/word.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">CV.doc</span>
@@ -397,42 +394,6 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
 </div>
 <div class="icon" id="ico-" style="top:554px;left:14px;" ondblclick="openWin('folder')" onclick="selIcon('folder')">
   <img src="images/folder.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">Random Stuff</span>
-</div>
-
-<!-- HOME WINDOW -->
-<div class="win" id="win-home" style="width:700px;z-index:10;">
-  <div class="titlebar" id="tb-home" onmousedown="startDrag(event,'home')">
-    <span>Misfit Brewing Co.</span>
-    <div class="titlebar-btns">
-      <div class="wbtn" onclick="minimiseWin('home')">_</div>
-      <div class="wbtn" onclick="toggleMax('home')">&#10066;</div>
-      <div class="wbtn" onclick="closeWin('home')">&#10005;</div>
-    </div>
-  </div>
-  <div class="menubar">
-    <span class="mitem"><u>F</u>ile</span><span class="mitem"><u>E</u>dit</span>
-    <span class="mitem"><u>V</u>iew</span><span class="mitem"><u>H</u>elp</span>
-  </div>
-  <div class="win-body">
-    <div class="home-body">
-      <div class="win95-h1">HERE'S TO THE MISFITS. </div>
-      <div class="inset" style="display:flex;align-items:flex-start;gap:14px;">
-        <div>
-          <p style="font-size:12px;line-height:1.75;color:#000;">We are a team of creatives and square pegs set on inventing and pushing boundaries, with an uncompromising and meticulous approach to crafting the perfect beer. </p>
-          <br>
-          <p style="font-size:12px;line-height:1.75;color:#000;">We are a New Zealand social enterprise brewing company, where we will be fighting to restore clean water sources in New Zealand and the wider Pacific, by donating all of our profits to the cause. </p>
-          <br>
-          <p style="font-size:12px;line-height:1.75;color:#000;">We look forward to sharing this journey with you. </p>
-          <br>
-          <p style="font-size:12px;line-height:1.75;color:#000;">Great beer, with a great cause. </p>
-        </div>
-      </div>
-      <div style="margin-top:6px;font-size:11px;color:#444;border-top:1px solid #808080;padding-top:8px;line-height:1;">
-        est. 2018 &nbsp;|&nbsp; +64 21 673 125 &nbsp;|&nbsp;
-        <a href="mailto:hey@brendandevoy.com" style="color:#000080;text-decoration:underline;">hey@misfitbrewing.co.nz</a>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- CV WINDOW -->
@@ -618,25 +579,21 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
         <div class="ppt-slide-area">
           <!-- SLIDE 1 — title slide, plain cream, centered text, dotted subtitle box -->
           <div class="ppt-content-slide" id="ppt-slide1">
-            <img class="ppt-img" src="images/Mlogo.JPG" alt="Misfit Logo" style="width:700px;">
+            <img class="ppt-img" src="images/IMG_0018.JPG" alt="Misfit Logo" style="width:700px;">
           </div>
           <!-- SLIDE 2 — content slide -->
           <div class="ppt-content-slide" id="ppt-slide2">
             <div style="display:flex;flex-direction:row;gap:24px;align-items:flex-start;padding:20px;height:450px;">
               <!-- Left: image -->
               <div style="flex:0 0 auto;">
-                <img class="ppt-img" src="images/misfit1.jpg" alt="Misfit Beer" style="width:400px;height:auto;display:block;">
               </div>
               <!-- Right: text -->
               <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:10px;">
-                <div class="ppt-content-title" style="margin-bottom:6px;">@misfitbeer</div>
-                <p class="ppt-content-body">I founded Misfit — a team of creatives and square pegs set on inventing and pushing boundaries, with an uncompromising and meticulous approach to crafting the perfect beer.</p>
-                <p class="ppt-content-body">A New Zealand social enterprise brewing company, we fought to restore clean water sources in NZ and the wider Pacific by donating all profits to the cause.</p>
-                <ul style="padding-left:18px;margin-top:4px;">
-                  <li class="ppt-content-body">50+ stockists nationwide</li>
-                  <li class="ppt-content-body">7 SKUs</li>
-                </ul>
-                <p class="ppt-content-body" style="margin-top:8px;font-style:italic;">"Here's to the crazy ones."</p>
+                <div class="ppt-content-title" style="margin-bottom:6px;">Here's to the Misfits.</div>
+                <p class="ppt-content-body">We are a team of creatives and square pegs set on inventing and pushing boundaries, with an uncompromising and meticulous approach to crafting the perfect beer.</p>
+                <p class="ppt-content-body">We are a New Zealand social enterprise brewing company, where we will be fighting to restore clean water sources in New Zealand and the wider Pacific, by donating all of our profits to the cause.</p>
+                <p class="ppt-content-body">We look forward to sharing this journey with you.</p>
+                <p class="ppt-content-body">Great beer, with a great cause. </p>
               </div>
             </div>
           </div>
