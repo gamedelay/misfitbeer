@@ -853,15 +853,13 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
       <div class="xls-tab-nav-btn" title="Next">&#9654;</div>
       <div class="xls-tab-nav-btn" title="Last">&#9654;&#9654;</div>
     </div>
-    <div class="xls-tab xls-tab-active" onclick="xlsSwitchSheet('Auckland')">Auckland</div>
-    <div class="xls-tab" onclick="xlsSwitchSheet('Wellington')">Wellington</div>
-    <div class="xls-tab" onclick="xlsSwitchSheet('Christchurch')">Christchurch</div>
-    <div class="xls-tab" onclick="xlsSwitchSheet('Online')">Online</div>
+    <div class="xls-tab xls-tab-active" onclick="xlsSwitchSheet('Auckland')">On-Premise</div>
+    <div class="xls-tab" onclick="xlsSwitchSheet('Wellington')">Off-Premise</div>
     <div class="xls-tab-spacer"></div>
   </div>
   <div class="statusbar">
     <span class="sstat" id="xls-status">Ready</span>
-    <span class="sstat">Sheet 1 of 4</span>
+    <span class="sstat">Sheet 1 of 2</span>
     <span class="sstat" style="margin-left:auto;">NUM</span>
   </div>
 </div>
@@ -1426,30 +1424,66 @@ setTimeout(function(){
 
 /* ══ EXCEL STOCKISTS ══ */
 var xlsSheetData={
-  'Auckland':{
-    '0,0':'Store','0,1':'Suburb','0,2':'City','0,3':'Phone','0,4':'Website','0,5':'Notes',
-    '1,0':'Brother\'s Beer','1,1':'Ponsonby','1,2':'Auckland','1,3':'09 360 4410','1,4':'brothersbeer.co.nz','1,5':'',
-    '2,0':'Regional Wines & Spirits','2,1':'Mt Eden','2,2':'Auckland','2,3':'','2,4':'regionalwines.co.nz','2,5':'',
-    '3,0':'Hopstock','3,1':'CBD','3,2':'Auckland','3,3':'','3,4':'hopstock.co.nz','3,5':'',
-    '4,0':'Ozone Coffee Roasters','4,1':'Grey Lynn','4,2':'Auckland','4,3':'','4,4':'ozonecoffee.co.nz','4,5':'On tap',
-    '5,0':'Good George','5,1':'Newmarket','5,2':'Auckland','5,3':'','5,4':'goodgeorge.co.nz','5,5':''
+  'On-Premise':{
+    '0,0':'Store','0,1':'Suburb','0,2',
+    '1,0':'The Store','1,1':'Britomart',
+    '2,0':'Ortolana','2,1':'Britomart',
+    '3,0':'Amano','3,1':'Britomart',
+    '4,0':'Brew on Quay','4,1':'Britomart',
+    '5,0':'The Garden Shed','4,1':'Mt Eden',
+    '6,0':'The Grounds','5,1':'Henderson',
+    '7,0':'Hollywood Cinema','7,1':'Avondale',
+    '8,0':'Red Rabbit Coffee Co.','8,1':'Parnell',
+    '9,0':'Vulture\'s Lane','9,1':'Auckland CBD',
+    '10,0':'The Chamberlain','10,1':'Britomart',
+    '11,0':'The Brewers Co-Operative','11,1':'Auckland CBD',
+    '12,0':'Northern Line','12,1':'K Road',
+    '13,0':'Tiger Burger','13,1':'Grey Lynn',
+    '14,0':'The Beer Spot','14,1':'Morningside',
+    '15,0':'The Beer Spot','15,1':'Northcote',
+    '16,0':'The Beer Spot','16,1':'Huapai',
+    '17,0':'Cupid Bar','17,1':'Pt Chev',
+    '18,0':'Corner Bar','18,1':'Auckland CBD',
+    '19,0':'Stoked','19,1':'Whitianga',
+    '20,0':'My Bar','20,1':'Auckland CBD',
+    '21,0':'XCHC','21,1':'Christchurch CBD',
+    '22,0':'Ostro','22,1':'Britomart',
   },
-  'Wellington':{
-    '0,0':'Store','0,1':'Suburb','0,2':'City','0,3':'Phone','0,4':'Website','0,5':'Notes',
-    '1,0':'Moore Wilson\'s','1,1':'Te Aro','1,2':'Wellington','1,3':'04 384 9906','1,4':'moorewilsons.co.nz','1,5':'',
-    '2,0':'Goldings Free Dive','2,1':'Cuba St','2,2':'Wellington','2,3':'','2,4':'goldingsfreedive.co.nz','2,5':'On tap',
-    '3,0':'The Malthouse','3,1':'Courtenay Pl','3,2':'Wellington','3,3':'','3,4':'malthouse.co.nz','3,5':'On tap'
+  'Off-Premise':{
+    '0,0':'Store','0,1':'Suburb','0,2',
+    '1,0':'Farro Fresh','1,1':'Grey Lynn',
+    '2,0':'Farro Fresh','2,1':'Orakei',
+    '3,0':'Farro Fresh','3,1':'North Shore',
+    '4,0':'Farro Fresh','4,1':'Epsom',
+    '5,0':'Farro Fresh','4,1':'Lunn Ave',
+    '6,0':'Farro Fresh','5,1':'Mt Eden',
+    '7,0':'Glengarry','7,1':'Takapuna',
+    '8,0':'Glengarry.','8,1':'Victoria Park',
+    '9,0':'Glengarry','9,1':'Khyber Pass',
+    '10,0':'Glengarry','10,1':'Remuera',
+    '11,0':'Glengarry','11,1':'Parnell',
+    '12,0':'Glengarry','12,1':'Kingsland',
+    '13,0':'Glengarry','13,1':'Mt Eden',
+    '14,0':'Glengarry','14,1':'Jervois Rd',
+    '15,0':'Glengarry','15,1':'Dominion Rd',
+    '16,0':'Glengarry','16,1':'Westmere',
+    '17,0':'Glengarry','17,1':'Thorndon',
+    '18,0':'Glengarry','18,1':'Courtenay Pl',
+    '19,0':'Glengarry','19,1':'Ponsonby',
+    '20,0':'Glengarry','20,1':'Ellerslie',
+    '21,0':'Glengarry','21,1':'Bassett Rd',
+    '22,0':'Glengarry','22,1':'Devonport',
+    '23,0':'Liquor King','23,1':'Ponsonby',
+    '24,0':'Liquor King','24,1':'Kapiti',
+    '25,0':'Fine Wine','25,1':'Constellation Dr',
+    '26,0':'Fine Wine','26,1':'Lunn Ave',
+    '27,0':'Mean Doses','27,1':'Te Aro',
+    '28,0':'Henry\'s Centre City','28,1':'Dunedin CBD',
+    '25,0':'Fine Wine','25,1':'Constellation Dr',
+    '26,0':'Maker2U Cellar','26,1':'Online',
   },
-  'Christchurch':{
-    '0,0':'Store','0,1':'Suburb','0,2':'City','0,3':'Phone','0,4':'Website','0,5':'Notes'
-  },
-  'Online':{
-    '0,0':'Platform','0,1':'URL','0,2':'Region','0,3':'Ships To','0,4':'Notes','0,5':'',
-    '1,0':'Craft Beer College','1,1':'craftbeercollege.co.nz','1,2':'NZ','1,3':'NZ Wide','1,4':'','1,5':'',
-    '2,0':'The Fine Wine Delivery Co.','2,1':'finewineco.co.nz','2,2':'NZ','2,3':'NZ Wide','2,4':'','2,5':''
-  }
 };
-var xlsActiveSheet='Auckland';
+var xlsActiveSheet='On-Premise';
 var xlsActiveCell={row:1,col:0};
 var XLS_ROWS=30;
 var XLS_COLS=7;
