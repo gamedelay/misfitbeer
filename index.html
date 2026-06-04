@@ -285,6 +285,33 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
   .m-menu-sep{border:none;border-top:1px solid #808080;border-bottom:1px solid #fff;margin:2px 4px;}
 }
 
+/* ══ EXCEL 97 — Stockists.xls ══ */
+.xls-formula-bar{background:#c0c0c0;border-bottom:2px solid #808080;padding:2px 4px;display:flex;align-items:center;gap:3px;flex-shrink:0;height:22px;}
+.xls-name-box{width:62px;border:2px solid;border-color:#808080 #fff #fff #808080;background:#fff;font-size:11px;font-family:Arial,sans-serif;padding:1px 3px;height:18px;text-align:center;outline:none;color:#000;}
+.xls-fx-label{font-size:12px;color:#c00;font-style:italic;padding:0 3px;font-weight:bold;flex-shrink:0;}
+.xls-formula-sep{width:1px;height:16px;background:#808080;margin:0 1px;flex-shrink:0;}
+.xls-formula-input{flex:1;border:2px solid;border-color:#808080 #fff #fff #808080;background:#fff;font-size:11px;font-family:Arial,sans-serif;padding:1px 3px;height:18px;outline:none;color:#000;}
+.xls-grid-wrap{flex:1;overflow:auto;background:#fff;position:relative;}
+.xls-table{border-collapse:collapse;font-size:11px;font-family:Arial,sans-serif;table-layout:fixed;}
+.xls-corner{background:#c0c0c0;border-right:2px solid;border-bottom:2px solid;border-color:#808080;width:42px;min-width:42px;height:20px;position:sticky;top:0;left:0;z-index:5;}
+.xls-col-hdr{background:#c0c0c0;border:1px solid;border-color:#fff #808080 #808080 #fff;height:20px;text-align:center;font-size:11px;font-family:Arial,sans-serif;font-weight:normal;color:#000;position:sticky;top:0;z-index:3;padding:0 4px;cursor:default;user-select:none;white-space:nowrap;overflow:hidden;}
+.xls-col-hdr.xls-col-active{background:#ffcc44;border-color:#fff #808080 #808080 #fff;}
+.xls-row-hdr{background:#c0c0c0;border:1px solid;border-color:#fff #808080 #808080 #fff;width:42px;min-width:42px;height:20px;text-align:center;font-size:11px;font-family:Arial,sans-serif;color:#000;position:sticky;left:0;z-index:2;cursor:default;user-select:none;vertical-align:middle;padding:0;}
+.xls-row-hdr.xls-row-active{background:#ffcc44;}
+.xls-cell{border-right:1px solid #d0d0d0;border-bottom:1px solid #d0d0d0;padding:0;height:20px;vertical-align:middle;position:relative;overflow:hidden;}
+.xls-cell input{width:100%;height:100%;border:none;outline:none;background:transparent;font-size:11px;font-family:Arial,sans-serif;padding:0 3px;color:#000;box-sizing:border-box;cursor:default;}
+.xls-cell input:focus{cursor:text;}
+.xls-cell.xls-active-cell{outline:2px solid #000080;outline-offset:-2px;z-index:1;position:relative;}
+.xls-cell.xls-active-cell input{background:#fff;}
+.xls-tabs-bar{background:#c0c0c0;border-top:2px solid #808080;display:flex;align-items:flex-end;padding:2px 4px 0;flex-shrink:0;min-height:22px;}
+.xls-tab-navs{display:flex;gap:1px;align-items:center;margin-right:6px;flex-shrink:0;}
+.xls-tab-nav-btn{background:#c0c0c0;border:1px solid;border-color:#fff #808080 #808080 #fff;width:15px;height:15px;display:flex;align-items:center;justify-content:center;font-size:8px;cursor:pointer;color:#000;font-family:'Marlett',Arial,sans-serif;flex-shrink:0;}
+.xls-tab-nav-btn:active{border-color:#808080 #fff #fff #808080;}
+.xls-tab{background:#c0c0c0;border:1px solid #808080;border-bottom:none;padding:2px 12px 3px;font-size:11px;font-family:Arial,sans-serif;cursor:pointer;color:#000;white-space:nowrap;position:relative;bottom:-1px;}
+.xls-tab.xls-tab-active{background:#fff;border-color:#808080;font-weight:bold;z-index:1;}
+.xls-tab:hover:not(.xls-tab-active){background:#d8d8d8;}
+.xls-tab-spacer{flex:1;border-bottom:1px solid #808080;}
+
 /* AGE GATE */
 #age-gate{
   display:none;
@@ -388,6 +415,9 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
 </div>
 <div class="icon" id="ico-folder" style="top:464px;left:14px;" ondblclick="openWin('folder')" onclick="selIcon('folder')">
   <img src="images/folder.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">Socials</span>
+</div>
+<div class="icon" id="ico-stockists" style="top:554px;left:14px;" ondblclick="openWin('stockists')" onclick="selIcon('stockists')">
+ <img src="images/excel97.png" style="width:32px;height:32px;image-rendering:pixelated;"><span class="icon-label">Stockists.xls</span>
 </div>
 
 <!-- CV WINDOW -->
@@ -762,6 +792,78 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
   <div class="statusbar"><span class="sstat" id="mines-status">Left-click to reveal. Right-click to flag.</span></div>
 </div>
 
+<!-- STOCKISTS WINDOW — Excel 97 style -->
+<div class="win hidden" id="win-stockists" style="width:680px;position:absolute;top:55px;left:160px;z-index:23;">
+  <div class="titlebar inactive" id="tb-stockists" onmousedown="startDrag(event,'stockists')">
+    <span><img src="images/excel97.png" style="width:14px;height:14px;image-rendering:pixelated;" onerror="this.style.display='none';">&nbsp;&nbsp;Stockists.xls</span>
+    <div class="titlebar-btns">
+      <div class="wbtn" onclick="minimiseWin('stockists')">_</div>
+      <div class="wbtn" onclick="toggleMax('stockists')">&#10066;</div>
+      <div class="wbtn" onclick="closeWin('stockists')">&#10005;</div>
+    </div>
+  </div>
+  <div class="menubar">
+    <span class="mitem"><u>F</u>ile</span><span class="mitem"><u>E</u>dit</span><span class="mitem"><u>V</u>iew</span>
+    <span class="mitem"><u>I</u>nsert</span><span class="mitem">F<u>o</u>rmat</span><span class="mitem"><u>T</u>ools</span>
+    <span class="mitem"><u>D</u>ata</span><span class="mitem"><u>W</u>indow</span><span class="mitem"><u>H</u>elp</span>
+  </div>
+  <div class="toolbar">
+    <span class="tb">&#x1F5CB;</span><span class="tb">&#x1F4C2;</span><span class="tb">&#x1F4BE;</span>
+    <div class="tbsep"></div><span class="tb">&#x1F5A8;</span>
+    <div class="tbsep"></div><span class="tb">&#x2702;</span><span class="tb">&#x1F4CB;</span><span class="tb">&#x1F4C4;</span>
+    <div class="tbsep"></div><span class="tb">&#x21A9;</span><span class="tb">&#x21AA;</span>
+    <div class="tbsep"></div><span class="tb">&#x2211;</span><span class="tb">&#x192;</span>
+    <div class="tbsep"></div><span class="tb" style="min-width:36px;">100% &#x25BE;</span><span class="tb">?</span>
+  </div>
+  <div class="toolbar">
+    <span class="tb" style="min-width:96px;">Arial &#x25BE;</span>
+    <div class="tbsep"></div>
+    <span class="tb" style="min-width:28px;">10 &#x25BE;</span>
+    <div class="tbsep"></div>
+    <span class="tb"><b>B</b></span><span class="tb"><i>I</i></span><span class="tb"><u>U</u></span>
+    <div class="tbsep"></div>
+    <span class="tb">&#x2261;</span><span class="tb">&#x2261;</span><span class="tb">&#x2261;</span>
+    <div class="tbsep"></div>
+    <span class="tb">$</span><span class="tb">%</span><span class="tb">,</span>
+    <span class="tb" style="font-size:9px;">.0&#x2192;</span><span class="tb" style="font-size:9px;">&#x2190;.0</span>
+    <div class="tbsep"></div>
+    <span class="tb">&#x2610;&#x2193;</span><span class="tb">&#x2610;&#x2191;</span>
+  </div>
+  <!-- Formula bar -->
+  <div class="xls-formula-bar">
+    <input class="xls-name-box" id="xls-name-box" type="text" readonly value="A1">
+    <div class="xls-formula-sep"></div>
+    <span class="xls-fx-label">fx</span>
+    <div class="xls-formula-sep"></div>
+    <input class="xls-formula-input" id="xls-formula-input" type="text" value=""
+      oninput="xlsFormulaInput(this.value)"
+      onkeydown="xlsFormulaKeydown(event)">
+  </div>
+  <!-- Grid body -->
+  <div class="win-body" style="overflow:hidden;display:flex;flex-direction:column;">
+    <div class="xls-grid-wrap" id="xls-grid-wrap">
+      <!-- Rendered by xlsRenderGrid() -->
+    </div>
+  </div>
+  <!-- Sheet tabs -->
+  <div class="xls-tabs-bar" id="xls-tabs-bar">
+    <div class="xls-tab-navs">
+      <div class="xls-tab-nav-btn" title="First">&#9664;&#9664;</div>
+      <div class="xls-tab-nav-btn" title="Prev">&#9664;</div>
+      <div class="xls-tab-nav-btn" title="Next">&#9654;</div>
+      <div class="xls-tab-nav-btn" title="Last">&#9654;&#9654;</div>
+    </div>
+    <div class="xls-tab xls-tab-active" onclick="xlsSwitchSheet('On-Premise')">On-Premise</div>
+    <div class="xls-tab" onclick="xlsSwitchSheet('Off-Premise')">Off-Premise</div>
+    <div class="xls-tab-spacer"></div>
+  </div>
+  <div class="statusbar">
+    <span class="sstat" id="xls-status">Ready</span>
+    <span class="sstat">Sheet 1 of 2</span>
+    <span class="sstat" style="margin-left:auto;">NUM</span>
+  </div>
+</div>
+
 </div><!-- end desktop -->
 
 <!-- CLIPPY — fixed to lower right, visible only when CV is maximised -->
@@ -841,6 +943,7 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
       <div class="start-item" onclick="startOpen('cv')"><img src="images/word.png" style="width:18px;height:18px;image-rendering:pixelated;">Beers.doc</div>
       <div class="start-item" onclick="startOpen('misfit')"><img src="images/power.png" style="width:18px;height:18px;image-rendering:pixelated;">About Us.ppt</div>
       <div class="start-item" onclick="startOpen('bundi')"><img src="images/paint.png" style="width:18px;height:18px;image-rendering:pixelated;">Pics.bmp</div>
+      <div class="start-item" onclick="startOpen('stockists')"><img src="images/excel97.png" style="width:18px;height:18px;image-rendering:pixelated;">Stockists.xls</div>
       <div class="start-item" onclick="startOpen('contact')"><img src="images/contact.png" style="width:18px;height:18px;image-rendering:pixelated;">Contact.msg</div>
       <div class="start-item" onclick="startOpen('mines')"><img src="images/mine.png" style="width:18px;height:18px;image-rendering:pixelated;">Minesweeper</div>
     </div>
@@ -871,11 +974,11 @@ body{font-family:Arial,sans-serif;font-size:12px;background:#000000;overflow:hid
 
 <script>
 (function(){
-var WINS=['cv','misfit','bundi','contact','mines','folder'];
+var WINS=['cv','misfit','bundi','contact','mines','folder','stockists'];
 var zTop=20,state={};
 WINS.forEach(function(w){state[w]={min:false,closed:true};});
-var LABELS={cv:'<img src="images/word.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Beers.doc',misfit:'<img src="images/power.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;About Us.ppt',bundi:'<img src="images/paint.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Pics.bmp',contact:'<img src="images/contact.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Contact',mines:'<img src="images/mine.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Minesweeper',folder:'<img src="images/folder.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Socials'};
-var isMax={cv:false,misfit:false,bundi:true,contact:false,mines:false,folder:false};
+var LABELS={cv:'<img src="images/word.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Beers.doc',misfit:'<img src="images/power.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;About Us.ppt',bundi:'<img src="images/paint.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Pics.bmp',contact:'<img src="images/contact.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Contact',mines:'<img src="images/mine.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Minesweeper',folder:'<img src="images/folder.png" style="width:18px;height:18px;image-rendering:pixelated;">&nbsp;Socials',stockists:'<img src="images/excel.png" style="width:18px;height:18px;image-rendering:pixelated;" onerror="this.style.display=\'none\'">&nbsp;Stockists.xls'};
+var isMax={cv:false,misfit:false,bundi:true,contact:false,mines:false,folder:false,stockists:false};
 var savedPos={};
 
 function centreWin(id){
@@ -934,9 +1037,16 @@ window.openWin=function(id){
       el.style.left=Math.round(dw*0.35)+'px';
       el.style.top=Math.round(dh*0.25)+'px';
     }
+    if(id==='stockists'){
+      el.style.width=Math.round(Math.min(720,dw*0.62))+'px';
+      el.style.height=Math.round(dh*0.72)+'px';
+      el.style.left=Math.round(dw*0.13)+'px';
+      el.style.top=Math.round(dh*0.06)+'px';
+    }
   }
   focusWin(id);
   if(id==='mines')initMines();
+  if(id==='stockists')initStockists();
   updateClippy();
 };
 window.minimiseWin=function(id){state[id].min=true;document.getElementById('win-'+id).classList.add('hidden');updateTaskbar();updateClippy();};
@@ -1312,6 +1422,228 @@ setTimeout(function(){
   });
 },300);
 
+/* ══ EXCEL STOCKISTS ══ */
+var xlsSheetData={
+  'On-Premise':{
+    '0,0':'Store','0,1':'Suburb',
+    '1,0':'The Store','1,1':'Britomart',
+    '2,0':'Ortolana','2,1':'Britomart',
+    '3,0':'Amano','3,1':'Britomart',
+    '4,0':'Brew on Quay','4,1':'Britomart',
+    '5,0':'The Garden Shed','5,1':'Mt Eden',
+    '6,0':'The Grounds','6,1':'Henderson',
+    '7,0':'Hollywood Cinema','7,1':'Avondale',
+    '8,0':'Red Rabbit Coffee Co.','8,1':'Parnell',
+    '9,0':'Vulture\'s Lane','9,1':'Auckland CBD',
+    '10,0':'The Chamberlain','10,1':'Britomart',
+    '11,0':'The Brewers Co-Operative','11,1':'Auckland CBD',
+    '12,0':'Northern Line','12,1':'K Road',
+    '13,0':'Tiger Burger','13,1':'Grey Lynn',
+    '14,0':'The Beer Spot','14,1':'Morningside',
+    '15,0':'The Beer Spot','15,1':'Northcote',
+    '16,0':'The Beer Spot','16,1':'Huapai',
+    '17,0':'Cupid Bar','17,1':'Pt Chev',
+    '18,0':'Corner Bar','18,1':'Auckland CBD',
+    '19,0':'Stoked','19,1':'Whitianga',
+    '20,0':'My Bar','20,1':'Auckland CBD',
+    '21,0':'XCHC','21,1':'Christchurch CBD',
+    '22,0':'Ostro','22,1':'Britomart',
+  },
+  'Off-Premise':{
+    '0,0':'Store','0,1':'Suburb',
+    '1,0':'Farro Fresh','1,1':'Grey Lynn',
+    '2,0':'Farro Fresh','2,1':'Orakei',
+    '3,0':'Farro Fresh','3,1':'North Shore',
+    '4,0':'Farro Fresh','4,1':'Epsom',
+    '5,0':'Farro Fresh','5,1':'Lunn Ave',
+    '6,0':'Farro Fresh','6,1':'Mt Eden',
+    '7,0':'Glengarry','7,1':'Takapuna',
+    '8,0':'Glengarry','8,1':'Victoria Park',
+    '9,0':'Glengarry','9,1':'Khyber Pass',
+    '10,0':'Glengarry','10,1':'Remuera',
+    '11,0':'Glengarry','11,1':'Parnell',
+    '12,0':'Glengarry','12,1':'Kingsland',
+    '13,0':'Glengarry','13,1':'Mt Eden',
+    '14,0':'Glengarry','14,1':'Jervois Rd',
+    '15,0':'Glengarry','15,1':'Dominion Rd',
+    '16,0':'Glengarry','16,1':'Westmere',
+    '17,0':'Glengarry','17,1':'Thorndon',
+    '18,0':'Glengarry','18,1':'Courtenay Pl',
+    '19,0':'Glengarry','19,1':'Ponsonby',
+    '20,0':'Glengarry','20,1':'Ellerslie',
+    '21,0':'Glengarry','21,1':'Bassett Rd',
+    '22,0':'Glengarry','22,1':'Devonport',
+    '23,0':'Liquor King','23,1':'Ponsonby',
+    '24,0':'Liquor King','24,1':'Kapiti',
+    '25,0':'Fine Wine','25,1':'Constellation Dr',
+    '26,0':'Fine Wine','26,1':'Lunn Ave',
+    '27,0':'Mean Doses','27,1':'Te Aro',
+    '28,0':'Henry\'s Centre City','28,1':'Dunedin CBD',
+    '25,0':'Fine Wine','25,1':'Constellation Dr',
+    '26,0':'Maker2U Cellar','26,1':'Online',
+  },
+};
+var xlsActiveSheet='On-Premise';
+var xlsActiveCell={row:1,col:0};
+var XLS_ROWS=30;
+var XLS_COLS=7;
+var XLS_COL_NAMES=['A','B','C','D','E','F','G'];
+var XLS_COL_W=[160,115,95,105,155,130,80];
+
+function xlsEsc(s){return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function xlsCellKey(r,c){return r+','+c;}
+function xlsCellAddr(r,c){return XLS_COL_NAMES[c]+(r+1);}
+
+function xlsRenderGrid(){
+  var wrap=document.getElementById('xls-grid-wrap');
+  if(!wrap)return;
+  var data=xlsSheetData[xlsActiveSheet]||{};
+  var html='<table class="xls-table" id="xls-table" cellspacing="0" cellpadding="0"><colgroup><col style="width:42px;min-width:42px;">';
+  for(var c=0;c<XLS_COLS;c++)html+='<col style="width:'+XLS_COL_W[c]+'px;min-width:'+XLS_COL_W[c]+'px;">';
+  html+='</colgroup><thead><tr><th class="xls-corner"></th>';
+  for(var c=0;c<XLS_COLS;c++){
+    var isAC=(xlsActiveCell.col===c);
+    html+='<th class="xls-col-hdr'+(isAC?' xls-col-active':'')+'" id="xls-ch-'+c+'">'+XLS_COL_NAMES[c]+'</th>';
+  }
+  html+='</tr></thead><tbody>';
+  for(var r=0;r<XLS_ROWS;r++){
+    var isAR=(xlsActiveCell.row===r);
+    html+='<tr><td class="xls-row-hdr'+(isAR?' xls-row-active':'')+'" id="xls-rh-'+r+'">'+(r+1)+'</td>';
+    for(var c=0;c<XLS_COLS;c++){
+      var val=data[xlsCellKey(r,c)]||'';
+      var isA=(xlsActiveCell.row===r&&xlsActiveCell.col===c);
+      var isBold=(r===0);
+      html+='<td class="xls-cell'+(isA?' xls-active-cell':'')+'" data-r="'+r+'" data-c="'+c+'">'
+        +'<input type="text" value="'+xlsEsc(val)+'"'
+        +(isBold?' style="font-weight:bold;"':'')
+        +' onfocus="xlsFocus('+r+','+c+')"'
+        +' onblur="xlsBlur('+r+','+c+',this.value)"'
+        +' onkeydown="xlsKey(event,'+r+','+c+')"'
+        +'></td>';
+    }
+    html+='</tr>';
+  }
+  html+='</tbody></table>';
+  wrap.innerHTML=html;
+  xlsUpdateBar();
+}
+
+function xlsFocus(r,c){
+  xlsActiveCell={row:r,col:c};
+  document.querySelectorAll('#xls-table .xls-cell').forEach(function(td){td.classList.remove('xls-active-cell');});
+  document.querySelectorAll('#xls-table .xls-col-hdr').forEach(function(th,i){th.classList.toggle('xls-col-active',i===c);});
+  document.querySelectorAll('#xls-table .xls-row-hdr').forEach(function(td,i){td.classList.toggle('xls-row-active',i===r);});
+  var td=document.querySelector('#xls-table td[data-r="'+r+'"][data-c="'+c+'"]');
+  if(td)td.classList.add('xls-active-cell');
+  xlsUpdateBar();
+}
+
+function xlsBlur(r,c,val){
+  if(!xlsSheetData[xlsActiveSheet])xlsSheetData[xlsActiveSheet]={};
+  xlsSheetData[xlsActiveSheet][xlsCellKey(r,c)]=val;
+}
+
+function xlsKey(e,r,c){
+  if(e.key==='Tab'){
+    e.preventDefault();
+    var nc=e.shiftKey?Math.max(0,c-1):Math.min(XLS_COLS-1,c+1);
+    xlsBlur(r,c,document.querySelector('#xls-table td[data-r="'+r+'"][data-c="'+c+'"] input').value);
+    xlsMoveTo(r,nc);
+  } else if(e.key==='Enter'){
+    e.preventDefault();
+    xlsBlur(r,c,document.querySelector('#xls-table td[data-r="'+r+'"][data-c="'+c+'"] input').value);
+    xlsMoveTo(Math.min(XLS_ROWS-1,r+1),c);
+  } else if(e.key==='ArrowDown'){
+    e.preventDefault();
+    xlsBlur(r,c,document.querySelector('#xls-table td[data-r="'+r+'"][data-c="'+c+'"] input').value);
+    xlsMoveTo(Math.min(XLS_ROWS-1,r+1),c);
+  } else if(e.key==='ArrowUp'){
+    e.preventDefault();
+    xlsBlur(r,c,document.querySelector('#xls-table td[data-r="'+r+'"][data-c="'+c+'"] input').value);
+    xlsMoveTo(Math.max(0,r-1),c);
+  } else if(e.key==='ArrowRight'&&e.target.selectionStart===e.target.value.length){
+    e.preventDefault();xlsMoveTo(r,Math.min(XLS_COLS-1,c+1));
+  } else if(e.key==='ArrowLeft'&&e.target.selectionStart===0){
+    e.preventDefault();xlsMoveTo(r,Math.max(0,c-1));
+  }
+}
+
+function xlsMoveTo(r,c){
+  xlsActiveCell={row:r,col:c};
+  document.querySelectorAll('#xls-table .xls-cell').forEach(function(td){td.classList.remove('xls-active-cell');});
+  document.querySelectorAll('#xls-table .xls-col-hdr').forEach(function(th,i){th.classList.toggle('xls-col-active',i===c);});
+  document.querySelectorAll('#xls-table .xls-row-hdr').forEach(function(td,i){td.classList.toggle('xls-row-active',i===r);});
+  var td=document.querySelector('#xls-table td[data-r="'+r+'"][data-c="'+c+'"]');
+  if(td){
+    td.classList.add('xls-active-cell');
+    var inp=td.querySelector('input');
+    if(inp){inp.focus();inp.select();}
+    td.scrollIntoView({block:'nearest',inline:'nearest'});
+  }
+  xlsUpdateBar();
+}
+
+function xlsUpdateBar(){
+  var nb=document.getElementById('xls-name-box');
+  var fi=document.getElementById('xls-formula-input');
+  if(nb)nb.value=xlsCellAddr(xlsActiveCell.row,xlsActiveCell.col);
+  if(fi){
+    var v=(xlsSheetData[xlsActiveSheet]&&xlsSheetData[xlsActiveSheet][xlsCellKey(xlsActiveCell.row,xlsActiveCell.col)])||'';
+    fi.value=v;
+  }
+  var st=document.getElementById('xls-status');
+  if(st)st.textContent='Ready';
+}
+
+window.xlsFormulaInput=function(val){
+  if(!xlsSheetData[xlsActiveSheet])xlsSheetData[xlsActiveSheet]={};
+  xlsSheetData[xlsActiveSheet][xlsCellKey(xlsActiveCell.row,xlsActiveCell.col)]=val;
+  var inp=document.querySelector('#xls-table td[data-r="'+xlsActiveCell.row+'"][data-c="'+xlsActiveCell.col+'"] input');
+  if(inp)inp.value=val;
+};
+
+window.xlsFormulaKeydown=function(e){
+  if(e.key==='Enter'){
+    xlsMoveTo(Math.min(XLS_ROWS-1,xlsActiveCell.row+1),xlsActiveCell.col);
+    setTimeout(function(){var inp=document.querySelector('#xls-table td[data-r="'+xlsActiveCell.row+'"][data-c="'+xlsActiveCell.col+'"] input');if(inp)inp.focus();},0);
+  }
+};
+
+window.xlsSwitchSheet=function(name){
+  // Save all current cell values
+  document.querySelectorAll('#xls-table .xls-cell input').forEach(function(inp){
+    var td=inp.closest('td');
+    if(td){
+      var r=parseInt(td.dataset.r),c=parseInt(td.dataset.c);
+      if(!xlsSheetData[xlsActiveSheet])xlsSheetData[xlsActiveSheet]={};
+      xlsSheetData[xlsActiveSheet][xlsCellKey(r,c)]=inp.value;
+    }
+  });
+  xlsActiveSheet=name;
+  xlsActiveCell={row:1,col:0};
+  document.querySelectorAll('#xls-tabs-bar .xls-tab').forEach(function(t){
+    t.classList.toggle('xls-tab-active',t.textContent.trim()===name);
+  });
+  // Update sheet counter
+  var tabs=['On-Premise','Off-Premise'];
+  var idx=tabs.indexOf(name)+1;
+  var st=document.querySelector('#win-stockists .statusbar .sstat:nth-child(2)');
+  if(st)st.textContent='Sheet '+idx+' of 2';
+  xlsRenderGrid();
+};
+
+window.initStockists=function(){
+  xlsActiveSheet='On-Premise';
+  xlsActiveCell={row:1,col:0};
+  // Restore active tab UI
+  document.querySelectorAll('#xls-tabs-bar .xls-tab').forEach(function(t){
+    t.classList.toggle('xls-tab-active',t.textContent.trim()==='On-Premise');
+  });
+  xlsRenderGrid();
+  // Focus first data cell after render
+  setTimeout(function(){xlsMoveTo(1,0);},50);
+};
+
 /* INIT */
 updateTaskbar();
 updateClippy();
@@ -1503,6 +1835,38 @@ function ageNo(){
     <div class="m-sbar">2 object(s)</div>
   </div>
 
+  <!-- Stockists / Excel -->
+  <div class="m-win" id="m-win-stockists">
+    <div class="m-tb">
+      <span><img src="images/excel.png" style="width:14px;height:14px;image-rendering:pixelated;" onerror="this.style.display='none';">&nbsp;&nbsp;Stockists.xls</span>
+      <div class="m-tb-btns"><div class="m-tb-btn">_</div><div class="m-tb-btn">&#10066;</div><div class="m-tb-btn">✕</div></div>
+    </div>
+    <div style="background:#c0c0c0;border-bottom:1px solid #808080;padding:1px 4px;display:flex;font-size:11px;flex-shrink:0;">
+      <span style="padding:2px 8px;color:#000;"><u>F</u>ile</span>
+      <span style="padding:2px 8px;color:#000;"><u>E</u>dit</span>
+      <span style="padding:2px 8px;color:#000;"><u>D</u>ata</span>
+      <span style="padding:2px 8px;color:#000;"><u>W</u>indow</span>
+      <span style="padding:2px 8px;color:#000;"><u>H</u>elp</span>
+    </div>
+    <!-- Mobile formula bar -->
+    <div style="background:#c0c0c0;border-bottom:2px solid #808080;padding:2px 4px;display:flex;align-items:center;gap:3px;flex-shrink:0;height:22px;">
+      <input style="width:52px;border:2px solid;border-color:#808080 #fff #fff #808080;background:#fff;font-size:11px;font-family:Arial,sans-serif;padding:1px 3px;height:18px;text-align:center;outline:none;color:#000;" type="text" readonly value="A1" id="m-xls-name">
+      <span style="width:1px;height:16px;background:#808080;flex-shrink:0;"></span>
+      <span style="font-size:12px;color:#c00;font-style:italic;font-weight:bold;padding:0 2px;">fx</span>
+      <span style="width:1px;height:16px;background:#808080;flex-shrink:0;"></span>
+      <input style="flex:1;border:2px solid;border-color:#808080 #fff #fff #808080;background:#fff;font-size:11px;font-family:Arial,sans-serif;padding:1px 3px;height:18px;outline:none;color:#000;" type="text" id="m-xls-formula" readonly>
+    </div>
+    <!-- Mobile sheet tabs -->
+    <div style="background:#c0c0c0;border-bottom:1px solid #808080;display:flex;padding:2px 4px 0;gap:2px;overflow-x:auto;flex-shrink:0;" id="m-xls-tabs">
+      <div onclick="mXlsTab('On-Premise')" style="background:#fff;border:1px solid #808080;border-bottom:none;padding:2px 10px 3px;font-size:11px;font-family:Arial,sans-serif;cursor:pointer;color:#000;font-weight:bold;white-space:nowrap;">On-Premise</div>
+      <div onclick="mXlsTab('Off-Premise')" style="background:#c0c0c0;border:1px solid #808080;border-bottom:none;padding:2px 10px 3px;font-size:11px;font-family:Arial,sans-serif;cursor:pointer;color:#000;white-space:nowrap;">Off-Premise</div>
+    </div>
+    <div style="flex:1;overflow:auto;background:#fff;" id="m-xls-grid">
+      <!-- Rendered by mXlsRender() -->
+    </div>
+    <div class="m-sbar" id="m-xls-status">Ready &nbsp;|&nbsp; Sheet 1 of 2</div>
+  </div>
+
   <!-- Contact -->
   <div class="m-win" id="m-win-contact" style="margin-top:100px;">
     <div class="m-tb">
@@ -1559,6 +1923,7 @@ function ageNo(){
 <div id="m-start-menu" style="display:none;">
   <div class="m-sidebar"><span class="m-sidebar-text">Windows 95</span></div>
   <div class="m-menu-inner">
+    <div class="m-menu-item" onclick="mOpenPage('stockists')"><img src="images/excel.png" style="width:18px;height:18px;image-rendering:pixelated;" onerror="this.style.display='none';">Stockists.xls</div>
     <div class="m-menu-item" onclick="mOpenPage('misfit')"><img src="images/power.png" style="width:18px;height:18px;image-rendering:pixelated;">About Us.ppt</div>
     <div class="m-menu-item" onclick="mOpenPage('cv')"><img src="images/word.png" style="width:18px;height:18px;image-rendering:pixelated;">Beers.doc</div>
     <div class="m-menu-item" onclick="mOpenPage('bundi')"><img src="images/paint.png" style="width:18px;height:18px;image-rendering:pixelated;">Pics.bmp</div>
@@ -1619,10 +1984,11 @@ var mConfig={
   bundi:   { width:'auto',  height:'77vh', marginTop:'auto' },
   folder:  { width:'auto',  height:'auto', marginTop:'15vh' },
   contact: { width:'auto',  height:'auto', marginTop:'15vh' },
-  mines:   { width:'85vw',  height:'65vh', marginTop:'auto' }
+  mines:   { width:'85vw',  height:'65vh', marginTop:'auto' },
+  stockists:{ width:'auto', height:'77vh', marginTop:'auto' }
 };
   /* Mobile page switching */
-  var mPages=['cv','misfit','bundi','folder','contact','mines'];
+  var mPages=['cv','misfit','bundi','folder','contact','mines','stockists'];
 window.mOpenPage=function(id){
   mPages.forEach(function(p){
     var w=document.getElementById('m-win-'+p);
@@ -1706,6 +2072,54 @@ window.mOpenPage=function(id){
     origMOpen(id);
     if('mines')mInitMines();
   };
+  /* Mobile Excel */
+  var mXlsSheet='On-Premise';
+  window.mXlsTab=function(name){
+    mXlsSheet=name;
+    document.querySelectorAll('#m-xls-tabs div').forEach(function(t){
+      var active=t.textContent.trim()===name;
+      t.style.background=active?'#fff':'#c0c0c0';
+      t.style.fontWeight=active?'bold':'normal';
+    });
+    var tabs=['On-Premise','Off-Premise'];
+    var st=document.getElementById('m-xls-status');
+    if(st)st.textContent='Ready | Sheet '+(tabs.indexOf(name)+1)+' of 4';
+    mXlsRender();
+  };
+  function mXlsRender(){
+    var grid=document.getElementById('m-xls-grid');
+    if(!grid)return;
+    var data=xlsSheetData[mXlsSheet]||{};
+    var cols=XLS_COL_NAMES.slice(0,6);
+    var widths=[140,100,80,90,130,100];
+    var html='<table style="border-collapse:collapse;font-size:11px;font-family:Arial,sans-serif;table-layout:fixed;" cellspacing="0" cellpadding="0">';
+    html+='<thead><tr><th style="background:#c0c0c0;border:1px solid #808080;width:28px;min-width:28px;height:18px;position:sticky;top:0;left:0;z-index:5;"></th>';
+    for(var c=0;c<6;c++)html+='<th style="background:#c0c0c0;border:1px solid;border-color:#fff #808080 #808080 #fff;width:'+widths[c]+'px;min-width:'+widths[c]+'px;height:18px;text-align:center;font-weight:normal;font-size:11px;font-family:Arial,sans-serif;position:sticky;top:0;z-index:3;">'+cols[c]+'</th>';
+    html+='</tr></thead><tbody>';
+    for(var r=0;r<20;r++){
+      html+='<tr><td style="background:#c0c0c0;border:1px solid;border-color:#fff #808080 #808080 #fff;width:28px;height:18px;text-align:center;font-size:11px;font-family:Arial,sans-serif;position:sticky;left:0;z-index:2;">'+(r+1)+'</td>';
+      for(var c=0;c<6;c++){
+        var val=data[r+','+c]||'';
+        var isBold=(r===0);
+        html+='<td style="border-right:1px solid #d0d0d0;border-bottom:1px solid #d0d0d0;padding:0;height:18px;overflow:hidden;">'
+          +'<input type="text" value="'+xlsEsc(val)+'"'
+          +' style="width:100%;height:100%;border:none;outline:none;background:transparent;font-size:11px;font-family:Arial,sans-serif;padding:0 2px;color:#000;box-sizing:border-box;'+(isBold?'font-weight:bold;':'')+'"'
+          +' onfocus="var nb=document.getElementById(\'m-xls-name\');if(nb)nb.value=\''+cols[c]+(r+1)+'\';var fi=document.getElementById(\'m-xls-formula\');if(fi)fi.value=this.value;"'
+          +' oninput="if(!xlsSheetData[mXlsSheet])xlsSheetData[mXlsSheet]={};xlsSheetData[mXlsSheet][\''+r+','+c+'\']=this.value;"'
+          +'></td>';
+      }
+      html+='</tr>';
+    }
+    html+='</tbody></table>';
+    grid.innerHTML=html;
+  }
+  /* Render mobile grid when stockists page opens */
+  var _origMOpen=window.mOpenPage;
+  window.mOpenPage=function(id){
+    _origMOpen(id);
+    if(id==='stockists')setTimeout(mXlsRender,50);
+  };
+
   document.addEventListener('click',function(e){
     if(mStartOpen&&!e.target.closest('#m-start-menu')&&!e.target.closest('#m-start-btn')){
       window.mCloseStart();
