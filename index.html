@@ -1423,7 +1423,7 @@ setTimeout(function(){
 },300);
 
 /* ══ EXCEL STOCKISTS ══ */
-var xlsSheetData={
+window.xlsSheetData={
   'On-Premise':{
     '0,0':'Store','0,1':'Suburb',
     '1,0':'The Store','1,1':'Britomart',
@@ -2109,7 +2109,7 @@ window.mOpenPage=function(id){
   function mXlsRender(){
     var grid=document.getElementById('m-xls-grid');
     if(!grid)return;
-    var data=xlsSheetData[mXlsSheet]||{};
+    var data=(window.xlsSheetData||{})[mXlsSheet]||{};
     var cols=XLS_COL_NAMES.slice(0,6);
     var widths=[140,100,80,90,130,100];
     var html='<table style="border-collapse:collapse;font-size:11px;font-family:Arial,sans-serif;table-layout:fixed;" cellspacing="0" cellpadding="0">';
@@ -2125,7 +2125,7 @@ window.mOpenPage=function(id){
           +'<input type="text" value="'+xlsEsc(val)+'"'
           +' style="width:100%;height:100%;border:none;outline:none;background:transparent;font-size:11px;font-family:Arial,sans-serif;padding:0 2px;color:#000;box-sizing:border-box;'+(isBold?'font-weight:bold;':'')+'"'
           +' onfocus="var nb=document.getElementById(\'m-xls-name\');if(nb)nb.value=\''+cols[c]+(r+1)+'\';var fi=document.getElementById(\'m-xls-formula\');if(fi)fi.value=this.value;"'
-          +' oninput="if(!xlsSheetData[mXlsSheet])xlsSheetData[mXlsSheet]={};xlsSheetData[mXlsSheet][\''+r+','+c+'\']=this.value;"'
+          +' oninput="if(!window.xlsSheetData[mXlsSheet])window.xlsSheetData[mXlsSheet]={};window.xlsSheetData[mXlsSheet][\\''+r+','+c+'\\']=this.value;"'
           +'></td>';
       }
       html+='</tr>';
